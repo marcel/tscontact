@@ -22,14 +22,14 @@
 
 - (id)initWithId:(ABRecordID)recordId
 {
-    Contact *contact = [self init];
+    TSContact *contact = [self init];
     [contact setRecordId: recordId];
     return contact;
 }
 
 - (id)initWithRef:(ABRecordRef)recordRef
 {
-    Contact *contact = [self init];
+    TSContact *contact = [self init];
     [contact setRecordRef:recordRef];
     return contact;
 }
