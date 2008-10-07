@@ -3,6 +3,8 @@
 #endif
 #import <AddressBook/AddressBook.h>
 
+#define TS_CONTACT_VERSION @"0.1"
+
 @interface TSContact : NSObject {
     ABAddressBookRef _addressBook;
     ABRecordID _recordId;
