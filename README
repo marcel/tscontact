@@ -1,0 +1,46 @@
+TSContact
+by Marcel Molina - http://marcelmolina.com
+
+What is TSContact
+=================
+TSContact is a simple Objective-C wrapper around the Core Foundation ABAddressBook ABPerson API. 
+It gives you access to AddressBook contacts via Objective-C objects rather than having to 
+mess with Core Foundation references and the like down at the C level.
+
+How to use TSContact
+====================
+
+Instantiating contacts
+-----------------------
+
+You can get access to a contact from your address book in two ways:
+
+  1) by passing in an ABRecordID
+  2) by passing in an ABRecordRef
+  
+Constructors are available for both scenarios:
+
+  [[TSContact alloc] initWithId:aRecordId];
+  
+  or
+  
+  [[TSContact alloc] initWithRef:aRecordRef];
+  
+If you are using the ABPeoplePickerNavigationController on the iPhone SDK you can hook 
+TSContact into the peoplePickerNavigationController:peoplePicker delegate method:
+
+  - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker 
+        shouldContinueAfterSelectingPerson:(ABRecordRef)person 
+  {
+      Contact *contact = [[Contact alloc] initWithRef:person];
+      // do stuff iwth contact ...
+      [self dismissModalViewControllerAnimated:YES];
+      return NO;
+  }
+
+Accessing properties
+--------------------
+
+You can currently just get the full name of a contact:
+
+  [contact fullName];
